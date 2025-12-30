@@ -49,7 +49,7 @@ h1 {
 }
 
 .message-scroll {
-  animation: scrollText 35s linear infinite;
+  animation: scrollText 17s linear infinite;
 }
 
 @keyframes scrollText {
