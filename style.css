@@ -145,22 +145,49 @@ form button {
   border-radius: 12px;
 }
 
-/* Message wall */
+/* Message Wall Container */
 .wall {
   margin-top: 15px;
-  height: 130px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.7);
+  height: 300px; /* adjust height to your modal size */
+  overflow-y: scroll; /* allow vertical scrolling */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  flex-grow: 1; /* fills remaining modal space */
+  background: rgba(255, 255, 255, 0.75); /* semi-transparent */
   border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* spacing between messages */
+  scroll-behavior: smooth; /* optional smooth scrolling */
 }
 
-.wall-scroll {
-  animation: scrollWall 7s linear infinite;
+/* Hide scrollbar for Chrome, Safari, Opera */
+.wall::-webkit-scrollbar {
+  display: none;
 }
 
-@keyframes scrollWall {
-  from { transform: translateY(100%); }
-  to { transform: translateY(-100%); }
+/* Individual Message Styling */
+.wall p {
+  margin: 0;
+  padding: 8px 12px;
+  background: rgba(255, 192, 203, 0.2); /* light pink bubble */
+  border-radius: 12px;
+  word-wrap: break-word;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: #5a3d5c;
+}
+
+/* Sender name bold */
+.wall p strong {
+  color: #c94a7c;
+  font-weight: 600;
+}
+
+/* Optional hover effect for messages */
+.wall p:hover {
+  background: rgba(255, 182, 193, 0.35);
 }
 
 /* Flying hearts */
