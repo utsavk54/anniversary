@@ -154,7 +154,7 @@ form button {
 }
 
 .wall-scroll {
-  animation: scrollWall 13s linear infinite;
+  animation: scrollWall 7s linear infinite;
 }
 
 @keyframes scrollWall {
