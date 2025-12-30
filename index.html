@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7 Years of Us ✨</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Supabase -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<div id="celebrationRain"></div>
+<body>
+
+  <canvas id="stars"></canvas>
+  <canvas id="fireworks"></canvas>
+
+  <main class="container">
+    <h1>✨ 7 Years Together ✨</h1>
+
+    <div class="message-card">
+      <div class="message-scroll">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse.
+          <br><br>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
+        </p>
+      </div>
+    </div>
+
+    <div class="heart-section">
+      <button id="heartBtn">❤️</button>
+      <span id="heartCount">0</span>
+    </div>
+
+    <button class="celebrate-btn">Celebrate with us 🎉</button>
+  </main>
+
+  <!-- POPUP -->
+  <div class="popup hidden">
+    <div class="popup-content">
+      <button class="close-popup">✕</button>
+      <h2>Leave a Message 💌</h2>
+
+      <form id="messageForm">
+        <input id="nameInput" type="text" placeholder="Your name" required />
+        <textarea id="messageInput" placeholder="Your message" required></textarea>
+        <button type="submit">Post</button>
+      </form>
+
+      <div class="wall">
+        <div id="wallMessages" class="wall-scroll"></div>
+      </div>
+    </div>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>

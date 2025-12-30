@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(
+    180deg,
+    #ffe6f0 0%,
+    #fff1dc 40%,
+    #e8f6ff 100%
+  );
+  color: #5a3d5c;
+  overflow-x: hidden;
+}
+
+/* Canvas layers */
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+/* Main layout */
+.container {
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 18px;
+  font-size: 2rem;
+  color: #c94a7c;
+}
+
+/* Message card */
+.message-card {
+  height: 60vh;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 24px;
+  padding: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(201, 74, 124, 0.15);
+}
+
+.message-scroll {
+  animation: scrollText 35s linear infinite;
+}
+
+@keyframes scrollText {
+  from { transform: translateY(100%); }
+  to { transform: translateY(-100%); }
+}
+
+/* Hearts */
+.heart-section {
+  margin: 18px 0;
+}
+
+#heartBtn {
+  font-size: 2.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  animation: beat 1.2s infinite;
+}
+
+#heartCount {
+  font-size: 1.1rem;
+  color: #c94a7c;
+}
+
+@keyframes beat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+/* Buttons */
+.celebrate-btn {
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(45deg, #ff7eb3, #ffb3c6);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 126, 179, 0.35);
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 192, 203, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden { display: none; }
+
+.popup-content {
+  background: rgba(255,255,255,0.9);
+  padding: 20px;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 10px 25px rgba(201, 74, 124, 0.2);
+}
+
+.popup-content h2 {
+  color: #c94a7c;
+}
+
+.close-popup {
+  float: right;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #c94a7c;
+}
+
+/* Inputs */
+input, textarea {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ffd3e1;
+  font-family: inherit;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(45deg, #ff7eb3, #ffb3c6);
+  color: white;
+  border: none;
+  border-radius: 12px;
+}
+
+/* Message wall */
+.wall {
+  margin-top: 15px;
+  height: 130px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 14px;
+}
+
+.wall-scroll {
+  animation: scrollWall 25s linear infinite;
+}
+
+@keyframes scrollWall {
+  from { transform: translateY(100%); }
+  to { transform: translateY(-100%); }
+}
+
+/* Flying hearts */
+.flying-heart {
+  position: fixed;
+  bottom: 30px;
+  font-size: 2rem;
+  animation: flyUp 2s ease-out forwards;
+}
+
+@keyframes flyUp {
+  to {
+    transform: translateY(-180px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Poppers */
+.popper {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: #ff9acb;
+  animation: pop 1s ease-out forwards;
+}
+
+@keyframes pop {
+  to {
+    transform: translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
+/* Cute pulse for remote likes */
+.pulse {
+  animation: pulseGlow 0.4s ease;
+}
+
+@keyframes pulseGlow {
+  50% {
+    box-shadow: inset 0 0 120px rgba(255, 126, 179, 0.25);
+  }
+}
+
+#celebrationRain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* Balloons */
+.balloon {
+  position: absolute;
+  font-size: 2.5rem;
+  animation: fallBalloon 6s ease-in forwards;
+}
+
+@keyframes fallBalloon {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* Confetti */
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  border-radius: 3px;
+  animation: fallConfetti 4s linear forwards;
+}
+
+@keyframes fallConfetti {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
