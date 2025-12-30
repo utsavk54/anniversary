@@ -63,12 +63,13 @@ heartBtn.onclick = async () => {
     .update({ count: lastLikeCount + 1 })
     .eq("id", 1);
 
-    await supabaseClient
+    const { data } = await supabaseClient
     .from("anniversary_likes")
     .select("count")
     .eq("id", 1)
     .single();
 
+  // 3️⃣ Update local variable and UI
   lastLikeCount = data.count;
   heartCount.textContent = data.count;
 };
@@ -104,31 +105,44 @@ const likesChannel = supabaseClient.channel('anniversary:likes', { config: { bro
 ********************/
 const wall = document.getElementById("wallMessages");
 const form = document.getElementById("messageForm");
+const nameInput = document.getElementById("nameInput");
+const messageInput = document.getElementById("messageInput");
 
+// Add a message at the top
 function addMessage(m) {
   const p = document.createElement("p");
   p.innerHTML = `<strong>${m.name}:</strong> ${m.message}`;
-  wall.appendChild(p);
+  wall.prepend(p); // <-- prepend instead of append
 }
 
+// Load all messages from Supabase
 async function loadMessages() {
   const { data } = await supabaseClient
     .from("anniversary_messages")
     .select("*")
-    .order("created_at");
+    .order("created_at", { ascending: false }); // newest first
   wall.innerHTML = "";
-  data.forEach(addMessage);
+  data.forEach(addMessage); // prepend each message
 }
 loadMessages();
 
+// Submit message
 form.onsubmit = async e => {
   e.preventDefault();
+
+  // Insert into Supabase
   await supabaseClient.from("anniversary_messages").insert([{
     name: nameInput.value,
     message: messageInput.value
   }]);
+
+  // Reset form
   form.reset();
+
+  // Reload messages immediately to show the latest at top
+  await loadMessages();
 };
+
 
 supabaseClient
   .channel("messages-live")
