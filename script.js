@@ -62,6 +62,15 @@ heartBtn.onclick = async () => {
     .from("anniversary_likes")
     .update({ count: lastLikeCount + 1 })
     .eq("id", 1);
+
+    await supabaseClient
+    .from("anniversary_likes")
+    .select("count")
+    .eq("id", 1)
+    .single();
+
+  lastLikeCount = data.count;
+  heartCount.textContent = data.count;
 };
 
 
