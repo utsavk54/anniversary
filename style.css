@@ -49,7 +49,7 @@ h1 {
 }
 
 .message-scroll {
-  animation: scrollText 17s linear infinite;
+  animation: scrollText 25s linear infinite;
 }
 
 @keyframes scrollText {
@@ -154,7 +154,7 @@ form button {
 }
 
 .wall-scroll {
-  animation: scrollWall 25s linear infinite;
+  animation: scrollWall 13s linear infinite;
 }
 
 @keyframes scrollWall {
