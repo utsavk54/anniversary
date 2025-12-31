@@ -58,10 +58,8 @@ loadLikes();
 heartBtn.onclick = async () => {
   createPopper();
   createFlyingHeart();
-  await supabaseClient
-    .from("anniversary_likes")
-    .update({ count: lastLikeCount + 1 })
-    .eq("id", 1);
+  
+  await supabaseClient.rpc("increment_like");
 
     const { data } = await supabaseClient
     .from("anniversary_likes")
